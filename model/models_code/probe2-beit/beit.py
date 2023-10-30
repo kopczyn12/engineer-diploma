@@ -117,8 +117,8 @@ model = model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-train_loader, test_loader = load_data('/Users/mkopczynski/Desktop/engineer-diploma/model/data/Dataset_emotions/train',
-                                      '/Users/mkopczynski/Desktop/engineer-diploma/model/data/Dataset_emotions/valid')
+train_loader, test_loader = load_data('./engineer-diploma/model/data/Dataset_emotions/train',
+                                      './engineer-diploma/model/data/Dataset_emotions/valid')
 
 train_model(model, criterion, optimizer, train_loader, device, epochs=25)
 
