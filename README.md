@@ -1,2 +1,2 @@
 # engineer-diploma
-Bachelor's degree project focused concerning about creating FER application.
+Engineer diploma project, web app for detecting humans' emotions
