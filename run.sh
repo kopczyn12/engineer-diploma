@@ -11,6 +11,7 @@ if [ ! -d "env" ]; then
     python3 -m venv env
 fi
 
+export PYTHONPATH="$DIR:$PYTHONPATH"
 # Activate the virtual environment
 source env/bin/activate
 
