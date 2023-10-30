@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>EmotionLab</title>
+</head>
+
+<body>
+    <canvas id="neuronCanvas"></canvas>
+    <script src="{% static 'js/neurons.js' %}"></script>
+    <header class="logo-section">
+        <h1>EmotionLab</h1>
+    </header>
+
+    <nav>
+        <div class="nav-links">
+            <a href="/detect_emotion/">Live Detection</a>
+            <a href="/photo_emotion_detection/">Photo Detection</a>
+            <a href="/faq/"> FAQ</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section class="tiles">
+            <article class="tile no-justify">
+                <h2>About the Project</h2>
+                <p>EmotionLab was birthed as an engineer's diploma project designed to innovatively detect human emotions in videos and photos. Combining advanced technology with user-focused design, it's a perfect fusion of academic insight and real-world application.</p>
+            </article>
+            
+            <article class="tile no-justify">
+                <h2>About the Author</h2>
+                <p>Michał Kopczyński, a Machine Learning and Software Engineer at aidmed.ai, has a profound interest in AI. EmotionLab is the crowning achievement of his FER research and serves as his engineering diploma project from Gdańsk University of Technology.</p>
+            </article>
+            
+            
+            <article class="tile">
+                <h2>Links</h2>
+                <div class="social-container">
+                    <div class="top-links">
+                        <a href="https://www.linkedin.com/in/micha%C5%82-kopczy%C5%84ski-5705ba1b8/" class="social-link linkedin-icon">
+                            <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn" width="20"> LinkedIn
+                        </a>
+                
+                        <a href="https://github.com/kopczyn12" class="social-link github-icon">
+                            <img src="{% static 'icons/github.svg' %}" alt="GitHub" width="20"> GitHub
+                        </a>
+                    </div>
+                    <a href="https://www.aidmed.ai/" class="social-link github-icon"> aidmed.ai
+            
+                    </a>
+                    
+                </div>
+                
+            </article>
+            <article class="tile">
+                <h2>Contact Me / Collaboration</h2>
+                <p>Interested in collaborating or got a question? Feel free to reach out!</p>
+                <a href="mailto:mkopczynski24@gmail.com" class="email-link"><strong>mkopczynski24@gmail.com</strong></a>
+            </article>
+            
+        </section>
+    </main>
+    
+</body>
+
+</html>

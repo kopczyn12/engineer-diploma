@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title><strong> Detector</strong></title>
+  </head>
+
+  <body>
+    <canvas id="neuronCanvas"></canvas>
+    <script src="{% static 'js/neurons.js' %}"></script>
+
+    <div class="video-container">
+      <a href="/" class="home-button">Return to Home</a>
+      <video id="video" width="640" height="480" autoplay></video>
+      <h2 id="emotionDisplay">Emotion will be displayed here</h2>
+    </div>
+
+    <script>
+      const videoElement = document.getElementById("video");
+      const emotionDisplay = document.getElementById("emotionDisplay");
+
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            videoElement.srcObject = stream;
+            videoElement.play();
+          });
+      }
+
+      setInterval(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = videoElement.videoWidth;
+        canvas.height = videoElement.videoHeight;
+        canvas.getContext("2d").drawImage(videoElement, 0, 0);
+        const dataURL = canvas.toDataURL("image/jpeg");
+
+        const response = await fetch("/detect_emotion/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": "{{ csrf_token }}",
+          },
+          body: JSON.stringify({ image: dataURL }),
+        });
+
+        const responseData = await response.json();
+        emotionDisplay.innerText = responseData.emotion;
+      }, 2000);
+    </script>
+    
+  </body>
+</html>

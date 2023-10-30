@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>EmotionLab FAQ</title>
+</head>
+
+<body>
+    <canvas id="neuronCanvas"></canvas>
+    <script src="{% static 'js/neurons.js' %}"></script>
+    <header class="logo-section">
+        <h1>FAQ</h1>
+    </header>
+
+    <a href="/" class="home-button">Return to Home</a>
+    
+    <main class="container">
+        <section class="tiles">
+            <article class="faq-tile">
+                <div class="faq-item">
+                    <h3>How to use it?</h3>
+                    <p>Your choice depends on your desired outcome. If you're interested in real-time emotion detection, navigate to the 'Home' section and select 'Live Detection'. Please grant browser permission to access your camera. If, on the other hand, you'd like to detect emotions in a specific photo, head to the 'Photo Detection' section. There, you can easily upload your image, click the 'Detect Emotion' button, and voila! It's done!</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is it free? </h3>
+                    <p>Absolutely! EmotionLab is committed to providing accessible tools for everyone. Our platform is entirely free of charge, allowing you to utilize its features without any hidden costs or fees. We believe in empowering our users, and offering our services for free is one way we achieve that mission. Feel free to dive in and make the most of what we offer!</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are we collecting your data?</h3>
+                    <p>Absolutely not. At EmotionLab, we prioritize your privacy and data security. When you use our emotion detection tools, your images, videos, or any related data are processed in real-time and are never stored on our servers. Our system is designed to analyze the data on-the-fly and return the results to you without retaining any information. We believe in providing innovative solutions while ensuring your personal data remains completely confidential. Your trust is paramount to us.</p>
+                </div>                
+                <div class="faq-item">
+                    <h3>What sets EmotionLab apart from standard FER solutions?</h3>
+                    <p>EmotionLab utilizes vision transforms with pretrained weights, offering a broad understanding of facial nuances. We then fine-tune our models specifically for emotion recognition, combining expansive learning with precise FER application, setting us distinctly apart from typical solutions.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+    
+</body>
+
+</html>

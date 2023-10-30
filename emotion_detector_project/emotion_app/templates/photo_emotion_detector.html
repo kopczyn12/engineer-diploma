@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Photo Emotion Detection</title>
+  </head>
+
+  <body>
+    <canvas id="neuronCanvas"></canvas>
+    <script src="{% static 'js/neurons.js' %}"></script>
+    <section class="image-container">
+      <a href="/" class="home-button">Return to Home</a>
+      <h2>Upload your photo</h2>
+      <form action="/photo_emotion_detection/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="button-container">
+          <div class="input-wrapper">
+            <input type="file" name="photo" accept="image/*" id="photo" class="fancy-input hidden-input" onchange="previewImage(event)" />
+            <label for="photo" class="fancy-button">Choose a photo</label>
+          </div>
+          <input type="submit" value="Detect Emotion" class="fancy-button" />
+        </div>
+      </form>
+
+      <div class="image-box">
+        {% if image_url %}
+        <img src="{{ image_url }}" alt="Uploaded Photo" class="image-display" />
+        {% else %}
+        <div class="placeholder" id="imagePlaceholder">Upload an image to view it here.</div>
+        {% endif %}
+      </div>
+      <div class="emotion-message" id="emotionMessage"></div>
+      {% if emotion %}
+      <h2>Detected Emotion:</h2>
+      <p2>{{ emotion }}</p2>
+      {% endif %}
+    </section>
+
+    <script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        const imageBox = document.querySelector(".image-box");
+        const emotionMessage = document.getElementById("emotionMessage");
+        
+        reader.onload = function() {
+            const output = document.createElement('img');
+            output.src = reader.result;
+            output.alt = "Uploaded Photo";
+            output.className = "image-display";
+            imageBox.innerHTML = '';
+            imageBox.appendChild(output);
+
+            emotionMessage.innerHTML = "Your image is successfully uploaded! Ready to unveil the emotions? Proceed by clicking the button.";
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+
+    </script>
+  </body>
+</html>
