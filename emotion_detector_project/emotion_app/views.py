@@ -25,7 +25,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = ConvNextForImageClassification.from_pretrained("facebook/convnext-tiny-224")
 in_features = model.classifier.in_features
 model.classifier = nn.Linear(in_features, 5)  
-model.load_state_dict(torch.load('emotion_detector_project/emotion_app/model/convnext.pth', map_location=device))
+model.load_state_dict(torch.load('./engineer-diploma/emotion_detector_project/emotion_app/model/convnext.pth', map_location=device))
 model = model.to(device)
 model.eval()
 
