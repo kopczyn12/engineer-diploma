@@ -55,6 +55,7 @@ def preprocess_single_image(image):
 
 # Function to predict the emotion from an image
 def predict_emotion_from_image(image):
+    """Predict emotion on image"""
     # Preprocess the image
     image_tensor = preprocess_single_image(image)
     
@@ -71,6 +72,7 @@ def predict_emotion_from_image(image):
 
 # Define a view for the photo emotion detection feature
 def photo_emotion_detection(request):
+    """Emotion detection"""
     # Initialize variables to hold the emotion and image URL
     emotion = None
     image_url = None
@@ -114,6 +116,7 @@ def photo_emotion_detection(request):
 
 # Function to detect a face in the image
 def detect_face(image):
+    """Detect face on the frame"""
     # Load the Haar cascade for face detection
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     # Convert the image from RGB to BGR, as OpenCV expects images in BGR format
